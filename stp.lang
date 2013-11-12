@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language id="systemtap" _name="SystemTap" version="2.0" _section="Scripts">
+  <metadata>
+    <property name="mimetypes">text/x-stp</property>
+    <property name="globs">*.stp</property>
+    <property name="line-comment-start">#</property>
+    <property name="block-comment-start">/*</property>
+    <property name="block-comment-end">*/</property>
+  </metadata>
+ 
+  <styles>
+    <style id="comment"           _name="Comment"                   map-to="def:comment"/>
+    <style id="error"             _name="Error"                     map-to="def:error"/>
+    <style id="string"            _name="String"                    map-to="def:string"/>
+    <style id="external"          _name="External"                  map-to="def:preprocessor"/>
+    <style id="declaration"       _name="Declaration"               map-to="def:type"/>
+    <style id="storage-class"     _name="Storage Class"             map-to="def:type"/>
+    <style id="scope-declaration" _name="Scope Declaration"         map-to="def:type"/>
+    <style id="keyword"           _name="Keyword"                   map-to="def:keyword"/>
+    <style id="null-value"        _name="Null Value"                map-to="def:special-constant"/>
+    <style id="boolean"           _name="Boolean value"             map-to="def:boolean"/>
+    <style id="number"            _name="Number"                    map-to="def:decimal"/>
+    <style id="reserved"          _name="Future Reserved Keywords"  map-to="def:error"/>
+    <style id="type"              _name="Data Type"                 map-to="def:type"/>
+    <style id="variable"          _name="Variable"                  map-to="def:identifier"/>
+    <style id="annotation"        _name="Annotation"                map-to="def:annotation"/>
+  </styles>
+ 
+  <definitions>
+ 
+    <context id="string" style-ref="string" end-at-line-end="true">
+      <start>"</start>
+      <end>"</end>
+    </context>
+ 
+    <context id="string-2" style-ref="string" end-at-line-end="true">
+      <start>'</start>
+      <end>'</end>
+    </context>
+     
+    <context id="line-comment" style-ref="comment" end-at-line-end="true">
+      <start>//</start>
+      <include>
+        <context ref="def:in-line-comment"/>
+      </include>
+    </context>
+ 
+    <context id="block-comment" style-ref="comment">
+      <start>/\*</start>
+      <end>\*/</end>
+      <include>
+        <context ref="def:in-comment"/>
+      </include>
+    </context>
+ 
+    <context id="close-comment-outside-comment" style-ref="error">
+      <match>\*/(?!\*)</match>
+    </context>
+    
+    <context id="variable" style-ref="variable">
+      <match>\$[{,\[]+[a-zA-Z0-9_\.]*[},\]]+</match>
+    </context>
+ 
+    <context id="externals" style-ref="external">
+      <keyword>import</keyword>
+      <keyword>package</keyword>
+    </context>
+ 
+    <context id="declarations" style-ref="declaration">
+      <keyword>probe</keyword>
+      <keyword>function</keyword>
+    </context>
+ 
+    <context id="primitive-types" style-ref="type">
+      <keyword>byte</keyword>
+      <keyword>char</keyword>
+      <keyword>def</keyword>
+      <keyword>double</keyword>
+      <keyword>float</keyword>
+      <keyword>int</keyword>
+      <keyword>long</keyword>
+      <keyword>short</keyword>
+      <keyword>void</keyword>
+    </context>
+     
+    <context id="storage-class" style-ref="storage-class">
+      <keyword>global</keyword>
+    </context>
+  
+    <context id="flow" style-ref="keyword">
+      <keyword>return</keyword>
+      <keyword>if</keyword>
+      <keyword>foreach</keyword>
+    </context>
+ 
+    <context id="aggregates" style-ref="keyword">
+      <keyword>count</keyword>
+      <keyword>sum</keyword>
+      <keyword>min</keyword>
+      <keyword>max</keyword>
+      <keyword>avg</keyword>
+    </context>
+ 
+    <context id="numeric" style-ref="number">
+      <match extended="true">
+        (\b([0-9]+|0[xX][0-9a-fA-F]+)[Ll]?\b|
+         \b(([0-9]+[Ee][-]?[0-9]+|
+            ([0-9]*\.[0-9]+|[0-9]+\.)([Ee][-]?[0-9]+)?)[fFdD]?|
+            [0-9]+[FfDd]))
+      </match>
+    </context>
+
+    <context id="future-reserved-words" style-ref="keyword">
+      <keyword>hist_log</keyword>
+      <keyword>print</keyword>
+      <keyword>printf</keyword>
+    </context>
+
+    <context id="systemtap">
+      <include>
+        <context ref="string"/>
+        <context ref="string-2"/>
+        <context ref="line-comment"/>
+        <context ref="block-comment"/>
+        <context ref="close-comment-outside-comment"/>
+        <context ref="variable"/>
+        <context ref="externals"/>
+        <context ref="declarations"/>
+        <context ref="primitive-types"/>
+        <context ref="storage-class"/>
+        <context ref="flow"/>
+        <context ref="aggregates"/>
+        <context ref="future-reserved-words"/>
+        <context ref="numeric"/>
+      </include>
+    </context>
+ 
+  </definitions>
+</language>
+
