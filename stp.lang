@@ -90,7 +90,13 @@
     <context id="flow" style-ref="keyword">
       <keyword>return</keyword>
       <keyword>if</keyword>
+      <keyword>for</keyword>
+      <keyword>while</keyword>
       <keyword>foreach</keyword>
+      <keyword>break</keyword>
+      <keyword>do</keyword>
+      <keyword>delete</keyword>
+      <keyword>next</keyword>
     </context>
  
     <context id="aggregates" style-ref="keyword">
@@ -99,6 +105,8 @@
       <keyword>min</keyword>
       <keyword>max</keyword>
       <keyword>avg</keyword>
+      <keyword>hist_log</keyword>
+      <keyword>hist_linear</keyword>
     </context>
  
     <context id="numeric" style-ref="number">
@@ -110,10 +118,43 @@
       </match>
     </context>
 
-    <context id="future-reserved-words" style-ref="keyword">
-      <keyword>hist_log</keyword>
+    <context id="context-functions" style-ref="keyword">
+      <keyword>backtrace</keyword>
+      <keyword>caller</keyword>
+      <keyword>caller_addr</keyword>
+      <keyword>cpu</keyword>
+      <keyword>egid</keyword>
+      <keyword>euid</keyword>
+      <keyword>execname</keyword>
+      <keyword>gid</keyword>
+      <keyword>is_return</keyword>
+      <keyword>pexecname</keyword>
+      <keyword>pid</keyword>
+      <keyword>ppid</keyword>
+      <keyword>tid</keyword>
+      <keyword>uid</keyword>
+      <keyword>print_backtrace</keyword>
+      <keyword>print_regs</keyword>
+      <keyword>print_stack</keyword>
+      <keyword>stack_size</keyword>
+      <keyword>stack_unused</keyword>
+      <keyword>stack_used</keyword>
+      <keyword>stp_pid</keyword>
+      <keyword>target</keyword>
+    </context>
+
+    <context id="output-functions" style-ref="keyword">
+      <keyword>error</keyword>
+      <keyword>log</keyword>
       <keyword>print</keyword>
       <keyword>printf</keyword>
+      <keyword>printd</keyword>
+      <keyword>printdln</keyword>
+      <keyword>println</keyword>
+      <keyword>sprint</keyword>
+      <keyword>sprintf</keyword>
+      <keyword>system</keyword>
+      <keyword>system</keyword>
     </context>
 
     <context id="systemtap">
@@ -130,7 +171,8 @@
         <context ref="storage-class"/>
         <context ref="flow"/>
         <context ref="aggregates"/>
-        <context ref="future-reserved-words"/>
+        <context ref="output-functions"/>
+        <context ref="context-functions"/>
         <context ref="numeric"/>
       </include>
     </context>
