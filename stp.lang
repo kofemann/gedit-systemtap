@@ -157,6 +157,33 @@
       <keyword>system</keyword>
     </context>
 
+    <context id="string-functions" style-ref="keyword">
+      <keyword>isinstr</keyword>
+      <keyword>strlen</keyword>
+      <keyword>strtol</keyword>
+      <keyword>substr</keyword>
+      <keyword>text_str</keyword>
+      <keyword>text_strn</keyword>
+      <keyword>tokensize</keyword>
+      <keyword>sprint</keyword>
+    </context>
+
+    <context id="time-functions" style-ref="keyword">
+      <keyword>get_cycles</keyword>
+      <keyword>gettimeofday_ms</keyword>
+      <keyword>gettimeofday_ns</keyword>
+      <keyword>gettimeofday_s</keyword>
+      <keyword>gettimeofday_us</keyword>
+    </context>
+
+    <context id="formatting-functions" style-ref="keyword">
+      <keyword>ctime</keyword>
+      <keyword>errno_str</keyword>
+      <keyword>returnstr</keyword>
+      <keyword>thread_indent</keyword>
+      <keyword>thread_timestamp</keyword>
+    </context>
+
     <context id="systemtap">
       <include>
         <context ref="string"/>
@@ -173,6 +200,9 @@
         <context ref="aggregates"/>
         <context ref="output-functions"/>
         <context ref="context-functions"/>
+        <context ref="string-functions"/>
+        <context ref="time-functions"/>
+        <context ref="formatting-functions"/>
         <context ref="numeric"/>
       </include>
     </context>
