@@ -23,7 +23,6 @@
     <style id="reserved"          _name="Future Reserved Keywords"  map-to="def:error"/>
     <style id="type"              _name="Data Type"                 map-to="def:type"/>
     <style id="variable"          _name="Variable"                  map-to="def:identifier"/>
-    <style id="annotation"        _name="Annotation"                map-to="def:annotation"/>
   </styles>
  
   <definitions>
@@ -113,6 +112,16 @@
       </match>
     </context>
 
+    <context id="timer-probes" style-ref="declaration">
+      <match extended="true">
+        (timer\.(msec|ms|sec|s|usec|us|nsec|ns|hertz|hz|jiffies|profile))
+      </match>
+    </context>
+
+    <context id="timer-probes-randomize" style-ref="keyword">
+      <keyword>randomize</keyword>
+    </context>
+
     <context id="context-functions" style-ref="keyword">
       <keyword>backtrace</keyword>
       <keyword>caller</keyword>
@@ -198,6 +207,8 @@
         <context ref="time-functions"/>
         <context ref="formatting-functions"/>
         <context ref="numeric"/>
+        <context ref="timer-probes"/>
+        <context ref="timer-probes-randomize"/>
       </include>
     </context>
  
