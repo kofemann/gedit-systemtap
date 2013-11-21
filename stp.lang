@@ -61,11 +61,6 @@
       <match>\$[{,\[]+[a-zA-Z0-9_\.]*[},\]]+</match>
     </context>
  
-    <context id="externals" style-ref="external">
-      <keyword>import</keyword>
-      <keyword>package</keyword>
-    </context>
- 
     <context id="declarations" style-ref="declaration">
       <keyword>probe</keyword>
       <keyword>function</keyword>
@@ -192,7 +187,6 @@
         <context ref="block-comment"/>
         <context ref="close-comment-outside-comment"/>
         <context ref="variable"/>
-        <context ref="externals"/>
         <context ref="declarations"/>
         <context ref="primitive-types"/>
         <context ref="storage-class"/>
